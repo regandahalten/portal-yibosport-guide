@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>亿博体育 · 智能运动平台</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f0f2f5;
+      color: #1e2a3a;
+      line-height: 1.5;
+      padding: 0 16px;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 0 60px;
+    }
+
+    /* 顶部导航 */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      padding: 14px 28px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e9edf2;
+      margin-bottom: 40px;
+    }
+
+    .nav-brand {
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 0.3px;
+      color: #0b2b44;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 450;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: #1d6f9c;
+      border-bottom-color: #1d6f9c;
+    }
+
+    /* Hero 区域 */
+    .hero {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid #e3e8ee;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+      padding: 48px 40px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+      color: #0a263b;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 18px;
+      font-size: 1.05rem;
+      color: #3a4b5c;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: #e8eef5;
+      padding: 6px 22px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #1f4b6e;
+      border: 1px solid #d7dfe8;
+    }
+
+    /* 核心介绍卡片 */
+    .intro-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e3e8ee;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      padding: 32px 36px;
+      margin-bottom: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .intro-text {
+      flex: 2;
+      min-width: 260px;
+    }
+
+    .intro-text h2 {
+      font-size: 1.5rem;
+      font-weight: 550;
+      margin-bottom: 12px;
+      color: #0a263b;
+    }
+
+    .intro-text p {
+      margin-bottom: 12px;
+      color: #2e4053;
+    }
+
+    .intro-highlight {
+      flex: 1;
+      min-width: 200px;
+      background: #f7faff;
+      border-radius: 16px;
+      padding: 20px 24px;
+      border-left: 4px solid #2b7aa2;
+    }
+
+    .intro-highlight ul {
+      list-style: none;
+    }
+
+    .intro-highlight li {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .intro-highlight li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #2b7aa2;
+      font-weight: 600;
+    }
+
+    /* 三场景模块 */
+    .scenes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e3e8ee;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      padding: 28px 22px 32px;
+      transition: transform 0.15s ease;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .scene-card h3 {
+      font-size: 1.2rem;
+      font-weight: 550;
+      margin-bottom: 14px;
+      color: #0a263b;
+      border-bottom: 2px solid #e9eef4;
+      padding-bottom: 8px;
+    }
+
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #2e4053;
+      margin-bottom: 8px;
+    }
+
+    .scene-card .meta {
+      font-size: 0.85rem;
+      color: #64788c;
+      margin-top: 12px;
+      border-top: 1px dashed #dde3ec;
+      padding-top: 12px;
+    }
+
+    /* 常见说明 (FAQ 摘要) */
+    .faq-section {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e3e8ee;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      padding: 32px 36px;
+      margin-bottom: 40px;
+    }
+
+    .faq-section h2 {
+      font-size: 1.4rem;
+      font-weight: 550;
+      margin-bottom: 20px;
+      color: #0a263b;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 32px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #edf1f6;
+      padding-bottom: 14px;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 550;
+      margin-bottom: 6px;
+      color: #1a3b52;
+    }
+
+    .faq-item p {
+      font-size: 0.92rem;
+      color: #3d5368;
+      line-height: 1.45;
+    }
+
+    /* 链接嵌入段落示例 */
+    .link-inline {
+      background: #f6f9fd;
+      border-radius: 14px;
+      padding: 18px 28px;
+      margin-top: 16px;
+      border: 1px solid #dce4ed;
+      font-size: 0.95rem;
+      color: #1e2a3a;
+    }
+
+    .link-inline a {
+      color: #1b6b9a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #b3cddf;
+    }
+
+    .link-inline a:hover {
+      color: #0b4b72;
+      border-bottom-color: #0b4b72;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #697e92;
+      padding: 20px 0 10px;
+      border-top: 1px solid #dce3eb;
+      margin-top: 10px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 868px) {
+      .scenes {
+        grid-template-columns: 1fr 1fr;
+      }
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 14px 18px;
+      }
+      .nav-links {
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .scenes {
+        grid-template-columns: 1fr;
+      }
+      .intro-card {
+        flex-direction: column;
+      }
+      .hero {
+        padding: 32px 20px;
+      }
+      .faq-section {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <!-- 顶部导航 -->
+  <nav class="nav">
+    <span class="nav-brand">亿博体育</span>
+    <ul class="nav-links">
+      <li><a href="#intro">平台</a></li>
+      <li><a href="#scenes">场景</a></li>
+      <li><a href="#faq">说明</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero 区域 -->
+  <section class="hero">
+    <h1>运动数据 · 轻量引擎</h1>
+    <p>聚焦日常训练与赛事管理，为运动爱好者与组织者提供清晰的数据工具。从记录到分析，保持简洁。</p>
+    <span class="tagline">面向运动场景的实用功能集</span>
+  </section>
+
+  <!-- 核心介绍卡片 -->
+  <section id="intro" class="intro-card">
+    <div class="intro-text">
+      <h2>围绕运动场景构建</h2>
+      <p>亿博体育专注于运动流程中的信息整合：赛事报名、成绩记录、队伍管理、实时统计。不堆砌冗余功能，而是提炼每个运动场景中的必要环节。</p>
+      <p>平台设计兼顾移动端与桌面端，适合协会、俱乐部、校园体育以及业余联赛使用。通过标准化数据字段，减少沟通成本，让参与者更关注运动本身。</p>
+    </div>
+    <div class="intro-highlight">
+      <ul>
+        <li>赛事编排与赛程同步</li>
+        <li>运动员档案与成绩追踪</li>
+        <li>多项目数据分类管理</li>
+        <li>角色权限：管理员 / 裁判 / 领队</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 三个场景模块 -->
+  <section id="scenes" class="scenes">
+    <div class="scene-card">
+      <h3>校园体育</h3>
+      <p>年级联赛、运动会、单项挑战赛。支持批量导入参赛名单，自动生成对阵表与计时结果。教师或体育委员可快速发布更新。</p>
+      <div class="meta">适用：中小学、大学体育部</div>
+    </div>
+    <div class="scene-card">
+      <h3>业余俱乐部</h3>
+      <p>羽毛球、篮球、足球等俱乐部日常约战、积分排名。队员出勤与统计数据可视化，辅助教练或队长调整战术与训练计划。</p>
+      <div class="meta">适用：社区俱乐部、企业球队</div>
+    </div>
+    <div class="scene-card">
+      <h3>小型赛事</h3>
+      <p>公开赛、邀请赛、慈善赛。从报名缴费到赛程公示，从实时比分到证书生成，减少纸质流程，提升组织效率。</p>
+      <div class="meta">适用：体育协会、赛事筹备组</div>
+    </div>
+  </section>
+
+  <!-- 常见说明 (FAQ 摘要) -->
+  <section id="faq" class="faq-section">
+    <h2>常见说明</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <strong>是否需要下载客户端？</strong>
+        <p>基于 Web 访问，主流浏览器即可使用。移动端自适应，无需安装额外程序。</p>
+      </div>
+      <div class="faq-item">
+        <strong>数据存储与隐私</strong>
+        <p>运动数据仅限团队内部可见，平台采用常规加密传输。管理员可自主管理成员访问权限。</p>
+      </div>
+      <div class="faq-item">
+        <strong>是否支持自定义项目？</strong>
+        <p>支持添加自定义运动类别与字段，满足非标准项目的记录需求。具体配置可参考使用手册。</p>
+      </div>
+      <div class="faq-item">
+        <strong>费用模式</strong>
+        <p>基础功能免费，高级统计与定制服务另行开通。无隐藏收费，具体方案在平台内说明。</p>
+      </div>
+    </div>
+
+    <!-- 链接自然嵌入句子 -->
+    <div class="link-inline">
+      如果你正在寻找一个结构清晰、聚焦运动数据的工具，可以了解 <a href="https://portal-yibosport.com">亿博体育</a> 提供的各项功能。页面内的场景模块展示了典型的适用方向，实际使用中可根据团队规模灵活调整。
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <div class="footer-note">
+    基于运动管理场景 · 信息更新于 2025年
+  </div>
+</div>
+</body>
+</html>
